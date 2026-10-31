@@ -69,7 +69,8 @@ string vardai [MAX_MOKINIU];
                 }
                     cout << endl;
                 }
-            }}
+            }
+            }
         } else if (pasirinkimas == 3) {
             if (mokiniuKiekis == 0) {
                 cout <<"Mokiniu nera"<< endl;
@@ -98,9 +99,61 @@ string vardai [MAX_MOKINIU];
                     }
                     cout << endl;
                 }
-                }
             }
-        else if (pasirinkimas == 7) {
+        } else if (pasirinkimas == 4) {
+                if (mokiniuKiekis == 0) {
+                    cout << "Mokiniu nera." << endl;
+                } else {
+                    int mokinioNumeris;
+
+                    do {
+                        cout << "Iveskite mokinio numeri: ";
+                        cin >> mokinioNumeris;
+
+                        if (mokinioNumeris < 1 || mokinioNumeris > mokiniuKiekis) {
+                            cout << "Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki "
+                                 << mokiniuKiekis << "." << endl;
+                        }
+                    } while (mokinioNumeris < 1 || mokinioNumeris > mokiniuKiekis);
+
+                    int indeksas = mokinioNumeris - 1;
+                    cout << "Pasirinktas mokinys: " << vardai[indeksas] << endl;
+                    if (pazymiuKiekis[indeksas] == 0) {
+                        cout << "Pazymiu nera." << endl;
+                    } else { int pazymioNumeris;
+
+                        do {
+                            cout << "Kuri pazymi atnaujinti? Iveskite numeri nuo 1 iki "
+                                 << pazymiuKiekis[indeksas] << ": ";
+                            cin >> pazymioNumeris;
+
+                            if (pazymioNumeris < 1 ||
+                                pazymioNumeris > pazymiuKiekis[indeksas]) {
+                                cout << "Neteisingas pazymio numeris." << endl;
+                                }
+                        } while (pazymioNumeris < 1 ||
+                                 pazymioNumeris > pazymiuKiekis[indeksas]);
+
+                        int pazymioIndeksas = pazymioNumeris - 1;
+                        cout << "Dabartinis pazymys: "
+                             << pazymiai[indeksas][pazymioIndeksas] << endl;
+                        int naujasPazymys;
+
+                        do {
+                            cout << "Iveskite nauja pazymi (1-10): ";
+                            cin >> naujasPazymys;
+
+                            if (naujasPazymys < 1 || naujasPazymys > 10) {
+                                cout << "Pazymys turi buti nuo 1 iki 10." << endl;
+                            }
+                        } while (naujasPazymys < 1 || naujasPazymys > 10);
+
+                        pazymiai[indeksas][pazymioIndeksas] = naujasPazymys;
+                        cout << "Pazymys atnaujintas. Nauja reiksme: "
+                             << pazymiai[indeksas][pazymioIndeksas] << endl;
+                    }
+                }
+            } else if (pasirinkimas == 7) {
             cout << "Programa baigiama." << endl;
         } else {
             cout << "Si funkcija dar kuriama." << endl;
